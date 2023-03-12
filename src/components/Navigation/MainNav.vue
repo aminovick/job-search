@@ -19,12 +19,28 @@
             </li>
           </ul>
         </nav>
+        <div class="flex ml-auto items-center">
+          <image-profile
+            v-if="isLoggedIn"
+            data-test="profile-image"
+          ></image-profile>
+          <action-button
+            v-else
+            @click="userLogin"
+            data-test="login-button"
+            type="primary"
+          ></action-button>
+        </div>
       </div>
+      <sub-nav v-if="isLoggedIn" data-test="sub-nav"></sub-nav>
     </div>
   </header>
 </template>
 <script setup>
 import { ref } from "vue";
+import ActionButton from "@/components/ActionButton.vue";
+import ImageProfile from "@/components/ImageProfile.vue";
+import SubNav from "@/components/SubNav.vue";
 const menuItems = ref([
   { text: "Teams", url: "/" },
   { text: "Locations", url: "/" },
@@ -33,4 +49,8 @@ const menuItems = ref([
   { text: "Students", url: "/" },
   { text: "Jobs", url: "/jobs/results" },
 ]);
+const isLoggedIn = ref(false);
+const userLogin = () => {
+  isLoggedIn.value = true;
+};
 </script>
