@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header :class="[headerHeigthClass, 'w-full']">
     <div class="fixed top-0 left-0 w-full h-16 bg-white">
       <div
         class="flex flex-nowrap h-full px-8 mx-auto border-b border-solid border-brand-gray-1"
@@ -37,7 +37,7 @@
   </header>
 </template>
 <script setup>
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import ActionButton from "@/components/ActionButton.vue";
 import ImageProfile from "@/components/ImageProfile.vue";
 import SubNav from "@/components/SubNav.vue";
@@ -53,4 +53,7 @@ const isLoggedIn = ref(false);
 const userLogin = () => {
   isLoggedIn.value = true;
 };
+const headerHeigthClass = computed(() => {
+  return [isLoggedIn.value ? "h-32" : "h-16"];
+});
 </script>

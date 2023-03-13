@@ -1,10 +1,11 @@
 <template>
   <div>
     <main-nav></main-nav>
-    <router-view />
+    <the-hero></the-hero>
   </div>
 </template>
 
 <script setup>
 import MainNav from "@/components/Navigation/MainNav.vue";
+import TheHero from "@/components/TheHero.vue";
 </script>
