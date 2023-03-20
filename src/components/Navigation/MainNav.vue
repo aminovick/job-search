@@ -38,9 +38,9 @@
 </template>
 <script setup>
 import { computed, ref } from "vue";
-import ActionButton from "@/components/ActionButton.vue";
-import ImageProfile from "@/components/ImageProfile.vue";
-import SubNav from "@/components/SubNav.vue";
+import ActionButton from "@/components/Shared/ActionButton.vue";
+import ImageProfile from "@/components/Navigation/ImageProfile.vue";
+import SubNav from "@/components/Navigation/SubNav.vue";
 const menuItems = ref([
   { text: "Teams", url: "/" },
   { text: "Locations", url: "/" },

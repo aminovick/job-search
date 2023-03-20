@@ -1,5 +1,5 @@
 import { mount } from "@vue/test-utils";
-import SubNav from "@/components/SubNav.vue";
+import SubNav from "@/components/Navigation/SubNav.vue";
 import { nextTick } from "vue";
 describe("Subnav", () => {
   const wrapperHelper = () =>

@@ -1,4 +1,4 @@
-import TheHeadLine from "@/components/TheHeadLine";
+import TheHeadLine from "@/components/JobSearch/TheHeadLine.vue";
 import { mount } from "@vue/test-utils";
 import { nextTick } from "vue";
 
