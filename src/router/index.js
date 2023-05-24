@@ -1,6 +1,18 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-
-const routes = [];
+import HomeView from "@/views/HomeView.vue";
+import JobResultsView from "@/views/JobResultsView.vue";
+const routes = [
+  {
+    path: "/",
+    component: HomeView,
+    name: "Home",
+  },
+  {
+    path: "/jobs/results",
+    component: JobResultsView,
+    name: "JobResults",
+  },
+];
 
 const router = createRouter({
   history: createWebHashHistory(process.env.BASE_URL),

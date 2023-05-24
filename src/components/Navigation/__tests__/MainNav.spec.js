@@ -1,22 +1,23 @@
-import { shallowMount, RouterLinkStub } from "@vue/test-utils";
+import { mount, RouterLinkStub } from "@vue/test-utils";
 import MainNav from "@/components/Navigation/MainNav.vue";
 
 describe("MainNav", () => {
-  let wrapper
-  beforeEach(() => {
-     wrapper = shallowMount(MainNav, {
+  const wrapperHelper = () =>
+    mount(MainNav, {
       global: {
         stubs: {
-          "router-link": RouterLinkStub,
+          routerLink: RouterLinkStub,
+          fontAwesomeIcon:true
         },
       },
     });
-  });
+
   it("displays company name", () => {
-    expect(wrapper.text()).toMatch("Bobo Careers");
+    const wrapper = wrapperHelper();
+    expect(wrapper.text()).toMatch("Amine Careers");
   });
   it("display menu items for navigation", () => {
-    const wrapper = shallowMount(MainNav);
+    const wrapper = wrapperHelper();
     const menuItems = wrapper.findAll("[data-test='main-nav-list-item']");
     const navigationManuItems = menuItems.map((item) => item.text());
     expect(navigationManuItems).toEqual([
@@ -30,14 +31,14 @@ describe("MainNav", () => {
   });
   describe("when user is logger out ", () => {
     it("prompts user to sign in", () => {
-      const wrapper = shallowMount(MainNav);
+      const wrapper = wrapperHelper();
       const loginButton = wrapper.find("[data-test='login-button']");
       expect(loginButton.exists()).toBe(true);
     });
   });
   describe("when user is logger in ", () => {
     it("prompts user to profile picture", async () => {
-      const wrapper = shallowMount(MainNav);
+      const wrapper = wrapperHelper();
       let profileImage = wrapper.find("[data-test='profile-image']");
       expect(profileImage.exists()).toBe(false);
 
@@ -48,7 +49,7 @@ describe("MainNav", () => {
       expect(profileImage.exists()).toBe(true);
     });
     it("displays subnavigation menu whit additional information", async () => {
-      const wraper = shallowMount(MainNav);
+      const wraper = wrapperHelper();
       let subNav = wraper.find("[data-test='sub-nav']");
       expect(subNav.exists()).toBe(false);
 
